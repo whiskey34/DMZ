@@ -1,28 +1,47 @@
-const steps = document.querySelectorAll('.step-1, .step-2, .step-3');
+const steps = document.querySelectorAll('.row .col');
+let activeStep = 0;
+
+updateActiveStep();
+
 const prevButton = document.querySelector('.left-arrow');
 const nextButton = document.querySelector('.right-arrow');
 
-let currentStep = 0;
+prevButton.addEventListener('click', goToPreviousStep);
+nextButton.addEventListener('click', goToNextStep);
 
-function updateStep() {
-  steps.forEach((step, index) => {
-    if (index === currentStep) {
-      step.classList.add('active');
-    } else {
-      step.classList.remove('active');
-    }
+function goToPreviousStep() {
+  if (activeStep > 0) {
+    activeStep--;
+    updateActiveStep();
+  }
+}
+
+function goToNextStep() {
+  if (activeStep < steps.length - 1) {
+    activeStep++;
+    updateActiveStep();
+  }
+}
+
+function updateActiveStep() {
+  steps.forEach((step) => {
+    step.classList.remove('active-step');
+    step.classList.remove('hover-step');
   });
+
+  steps[activeStep].classList.add('active-step');
+
+  // Add hover effect to the active step
+  steps[activeStep].addEventListener('mouseover', addHoverClass);
+  steps[activeStep].addEventListener('mouseout', removeHoverClass);
 }
 
-function navigateNext() {
-  currentStep = (currentStep + 1) % steps.length;
-  updateStep();
+function addHoverClass() {
+  if (!this.classList.contains('hover-step')) {
+    this.classList.add('hover-step');
+  }
 }
 
-function navigatePrevious() {
-  currentStep = (currentStep - 1 + steps.length) % steps.length;
-  updateStep();
+function removeHoverClass() {
+  this.classList.remove('hover-step');
 }
-
-nextButton.addEventListener('click', navigateNext);
-prevButton.addEventListener('click', navigatePrevious);

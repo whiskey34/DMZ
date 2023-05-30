@@ -81,12 +81,33 @@ body {
     .banner {
       display: none;
     }
+
+    .tiga {
+      flex-wrap: wrap;
+    }
+  
+    .step-2,
+    .step-3 {
+      display: none;
+    }
+  
+    .button-arrow {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+  
+    .button-arrow a {
+      margin: 0 5px;
+    }
+
+    footer{
+      overflow: auto;
+    }
   }
   
-  .child-title {
-    font-size: 20px;
-    color: #43A1F6;
-  }
   
   .main-title {
     font-size: 52px;
@@ -133,6 +154,8 @@ body {
     position: fixed;
     bottom: 0;
     left: 0;
+
+    /* overflow: scroll; */
   }
   
   /* footer .row {
@@ -140,8 +163,8 @@ body {
     margin-right: -20px;
   } */
   
-  .btn-arrow {
-    margin-right: auto;
+  .button-arrow {
+    margin-left: 90px;
   }
 
   .left-arrow{
@@ -180,7 +203,36 @@ body {
   transition: transform 0.3s ease;
 }
 
-  
-  
+.step-1.active-step,
+.step-2.active-step,
+.step-3.active-step,
+.step-1.active-step:hover,
+.step-2.active-step:hover,
+.step-3.active-step:hover,
+.step-1.hover-step,
+.step-2.hover-step,
+.step-3.hover-step {
+  background-color: #e9e9e9;
+  color: #333;
+  height: 200px;
+  transition: transform 0.3s ease;
+
+  transform: translateY(-5px);
+  /* z-index: 1; */
+  position: relative;
+  top: -50px;
+  padding-top: 50px;
+}
+
+.step-1.hover-step {
+  transform: scale(1.1);
+}
+
+/* .step-1.active-step,
+.step-1.active-step:hover,
+.step-1.hover-step {
+  top: -10px;
+  padding-top: 10px;
+} */
   /* Additional styles and modifications as needed */
   
